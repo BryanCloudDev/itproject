@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookResponse } from '../dto/BookResponse';
+import {
+  AuthorResponse,
+  BookResponse,
+  CategoryResponse,
+} from '../dto/BookResponse';
 import { UpdateBookService } from './update-book.service';
 import { BookRequest } from '../dto/BookRequest';
+import { AddBookService } from '../add-book/add-book.service';
 
 @Component({
   selector: 'app-update-book',
@@ -11,6 +16,8 @@ import { BookRequest } from '../dto/BookRequest';
 export class UpdateBookComponent implements OnInit {
   private id: number = 0;
   public book: BookResponse | undefined;
+  public authors: AuthorResponse[] | undefined;
+  public categories: CategoryResponse[] | undefined;
   public bookUpdated: BookRequest = {
     name: '',
     price: 0,
@@ -21,7 +28,8 @@ export class UpdateBookComponent implements OnInit {
   constructor(
     private updateBookService: UpdateBookService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private addBookService: AddBookService
   ) {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
@@ -29,6 +37,20 @@ export class UpdateBookComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getBookById(this.id);
+    this.getAuthors();
+    this.getCategories();
+  }
+
+  private getAuthors() {
+    this.addBookService.getAuthors().subscribe((authors) => {
+      this.authors = authors;
+    });
+  }
+
+  private getCategories() {
+    this.addBookService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
   getBookById(id: number) {

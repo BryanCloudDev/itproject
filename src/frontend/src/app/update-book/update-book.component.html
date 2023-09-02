@@ -5,14 +5,16 @@
   </div>
   <div class="mb-3">
     <label for="authorId" class="form-label">Autor</label>
-    <select class="form-select" disabled>
-      <option selected>{{book?.author?.name}}</option>
+    <select class="form-select" id="authorId" name="authorId" [(ngModel)]="bookUpdated.authorId">
+      <option selected disabled>{{book?.author?.name}}</option>
+      <option *ngFor="let author of authors" value={{author.id}}>{{author.name}}</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="categoryId" class="form-label">Categoría</label>
-    <select class="form-select" disabled>
-      <option selected>{{book?.category?.name}}</option>
+    <select class="form-select" id="categoryId" name="categoryId" [(ngModel)]="bookUpdated.categoryId">
+      <option selected disabled>{{book?.category?.name}}</option>
+      <option *ngFor="let category of categories" value={{category.id}}>{{category.name}}</option>
     </select>
   </div>
   <div class="mb-3">

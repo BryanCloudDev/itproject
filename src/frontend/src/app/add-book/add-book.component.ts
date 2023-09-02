@@ -48,6 +48,11 @@ export class AddBookComponent implements OnInit {
   }
 
   onSubmit() {
+    // for (const property of Object.keys(this.book)) {
+    //   if (this.book[property] === null) {
+    //     console.log(this.book[property]);
+    //   }
+    // }
     this.createBook();
   }
 }
