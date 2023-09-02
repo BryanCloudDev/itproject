@@ -20,16 +20,16 @@ import com.itproject.itproject.service.AuthorService;
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
-  
+
   @Autowired
   private AuthorService authorService;
 
   @PostMapping
-    public ResponseEntity<Author> crearAuthor(@RequestBody Author author) {
-      System.out.println(author);
-      Author newAuthor = authorService.createAuthor(author);
-      return ResponseEntity.status(HttpStatus.CREATED).body(newAuthor);
-    }
+  public ResponseEntity<Author> crearAuthor(@RequestBody Author author) {
+    System.out.println(author);
+    Author newAuthor = authorService.createAuthor(author);
+    return ResponseEntity.status(HttpStatus.CREATED).body(newAuthor);
+  }
 
   @GetMapping("/{id}")
   public ResponseEntity<Author> getAuthorById(@PathVariable Long id) {

@@ -15,15 +15,15 @@ public class BookService {
   private final BookRepository bookRepository;
 
   public BookService(BookRepository bookRepository) {
-      this.bookRepository = bookRepository;
+    this.bookRepository = bookRepository;
   }
 
   public Book createBook(Book book) {
-      return bookRepository.save(book);
+    return bookRepository.save(book);
   }
 
   public List<Book> getAllBooks() {
-      return bookRepository.findAll();
+    return bookRepository.findAll();
   }
 
   public Book getBookById(Long id) {
@@ -32,18 +32,18 @@ public class BookService {
 
   public Book updateBook(Long id, Book updatedBook) {
     return bookRepository.findById(id)
-      .map(book -> {
+        .map(book -> {
           book.setName(updatedBook.getName());
           book.setAuthor(updatedBook.getAuthor());
           book.setCategory(updatedBook.getCategory());
           book.setPrice(updatedBook.getPrice());
           book.setStatus(updatedBook.getStatus());
           return bookRepository.save(book);
-      })
-      .orElse(null);
+        })
+        .orElse(null);
   }
 
   public void deleteBook(Long id) {
-      bookRepository.deleteById(id);
+    bookRepository.deleteById(id);
   }
 }

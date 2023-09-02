@@ -26,7 +26,7 @@ public class AuthorService {
     return authorRepository.findById(id).orElse(null);
   }
 
-    public List<Author> getAllAuthors() {
+  public List<Author> getAllAuthors() {
     return authorRepository.findAll();
   }
 
