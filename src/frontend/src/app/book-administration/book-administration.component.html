@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center align-items-center">
+  <a class="btn btn-primary" [routerLink]="['/add-books']">Agregar Libros</a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Libro Nombre</th>
+      <th>Precio</th>
+      <th>Nombre Autor</th>
+      <th>Nombre Categoría</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí puedes iterar sobre los libros y mostrarlos en la tabla -->
+    <tr *ngFor="let book of books">
+      <td>{{book.name}}</td>
+      <td>{{book.price}}</td>
+      <td>{{book.author.name}}</td>
+      <td>{{book.category.name}}</td>
+      <td>
+        <a (click)="editBook(book.id)" class="btn btn-info mr-2">Modificar</a>
+        <a (click)="deleteBook(book.id)" class="btn btn-danger">Desactivar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

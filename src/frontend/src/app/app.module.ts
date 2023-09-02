@@ -10,6 +10,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HttpClientModule } from '@angular/common/http';
 import { AddBookComponent } from './add-book/add-book.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     BookAdministrationComponent,
     NavigationBarComponent,
     AddBookComponent,
+    UpdateBookComponent,
   ],
   imports: [
     BrowserModule,

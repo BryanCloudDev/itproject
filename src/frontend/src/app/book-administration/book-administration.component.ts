@@ -25,7 +25,9 @@ export class BookAdministrationComponent implements OnInit {
     });
   }
 
-  public editBook(id: number) {}
+  public editBook(id: number) {
+    this.router.navigate(['/update-book', id]);
+  }
 
   public deleteBook(id: number) {
     this.bookAdministrationService.deleteBook(id).subscribe((result) => {

@@ -3,6 +3,7 @@ export class BookRequest {
     public name: string,
     public authorId: number,
     public categoryId: number,
-    public price: number
+    public price: number,
+    public status?: boolean
   ) {}
 }
