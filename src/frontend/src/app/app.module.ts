@@ -8,6 +8,7 @@ import { IndexComponent } from './index/index.component';
 import { BookAdministrationComponent } from './book-administration/book-administration.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     IndexComponent,
     BookAdministrationComponent,
     NavigationBarComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,
