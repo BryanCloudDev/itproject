@@ -3,10 +3,7 @@ package com.itproject.itproject.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.itproject.itproject.dto.AuthorDTO;
 import com.itproject.itproject.dto.BookDTO;
 import com.itproject.itproject.model.Author;
 import com.itproject.itproject.model.Book;
