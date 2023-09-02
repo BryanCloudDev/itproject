@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.itproject.itproject.dto.AuthorDTO;
 import com.itproject.itproject.model.Author;
 import com.itproject.itproject.service.AuthorService;
 
@@ -25,8 +26,8 @@ public class AuthorController {
   private AuthorService authorService;
 
   @PostMapping
-  public ResponseEntity<Author> crearAuthor(@RequestBody Author author) {
-    System.out.println(author);
+  public ResponseEntity<Author> crearAuthor(@RequestBody AuthorDTO authorDTO) {
+    Author author = authorService.convertDTOToEntity(authorDTO);
     Author newAuthor = authorService.createAuthor(author);
     return ResponseEntity.status(HttpStatus.CREATED).body(newAuthor);
   }
