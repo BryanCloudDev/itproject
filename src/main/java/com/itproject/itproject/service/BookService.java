@@ -47,12 +47,10 @@ public class BookService {
     return bookRepository.findById(id).orElse(null);
   }
 
-  public Book updateBook(Long id, Book updatedBook) {
+  public Book updateBook(Long id, BookDTO updatedBook) {
     return bookRepository.findById(id)
         .map(book -> {
           book.setName(updatedBook.getName());
-          book.setAuthor(updatedBook.getAuthor());
-          book.setCategory(updatedBook.getCategory());
           book.setPrice(updatedBook.getPrice());
           book.setStatus(updatedBook.getStatus());
           return bookRepository.save(book);
@@ -70,7 +68,7 @@ public class BookService {
     newBook.setAuthor(author);
     newBook.setCategory(category);
     newBook.setPrice(bookDTO.getPrice());
-    newBook.setStatus(bookDTO.getStatus());
+    newBook.setStatus(true);
     return newBook;
   }
 }
