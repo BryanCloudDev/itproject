@@ -1,0 +1,8 @@
+package com.itproject.itproject.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.itproject.itproject.model.Category;
+
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+  
+}
