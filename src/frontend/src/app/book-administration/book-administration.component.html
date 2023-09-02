@@ -21,7 +21,8 @@
       <td>{{book.category.name}}</td>
       <td>
         <a (click)="editBook(book.id)" class="btn btn-info mr-2">Modificar</a>
-        <a (click)="deleteBook(book.id)" class="btn btn-danger">Desactivar</a>
+        <a (click)="deleteBook(book.id)"
+          class="btn btn-danger {{(book.status === false) ? 'disabled' : ''}}">Desactivar</a>
       </td>
     </tr>
   </tbody>
