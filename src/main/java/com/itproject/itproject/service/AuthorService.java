@@ -17,7 +17,8 @@ public class AuthorService {
     this.authorRepository = authorRepository;
   }
 
-  public Author createAuthor(Author author) {
+  public Author createAuthor(AuthorDTO authorDTO) {
+    Author author = this.convertDTOToEntity(authorDTO);
     return authorRepository.save(author);
   }
 
