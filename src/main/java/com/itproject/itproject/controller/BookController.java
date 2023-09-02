@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.itproject.itproject.dto.BookDTO;
 import com.itproject.itproject.model.Book;
 import com.itproject.itproject.service.BookService;
 
@@ -25,8 +26,12 @@ public class BookController {
   private BookService bookService;
 
   @PostMapping
-  public ResponseEntity<Book> createBook(@RequestBody Book book) {
+  public ResponseEntity<Book> createBook(@RequestBody BookDTO book) {
     Book newBook = bookService.createBook(book);
+    if (newBook == null) {
+      return ResponseEntity.badRequest().build();
+    }
+
     return ResponseEntity.status(HttpStatus.CREATED).body(newBook);
   }
 
