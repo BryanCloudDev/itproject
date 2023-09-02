@@ -1,26 +1,34 @@
 package com.itproject.itproject.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "name")
   private String name;
 
+  @Column(name = "author")
   private String author;
 
+  @Column(name = "category")
   private String category;
 
+  @Column(name = "price")
   private double price;
 
-  private String status;
+  @Column(name = "status")
+  private Boolean status;
 
   /* Getter and setters */
 
@@ -64,11 +72,11 @@ public class Book {
     this.price = price;
   }
 
-  public String getStatus() {
+  public Boolean getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(Boolean status) {
     this.status = status;
   }
 }
