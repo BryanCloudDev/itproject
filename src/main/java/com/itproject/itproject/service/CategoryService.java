@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itproject.itproject.dto.CategoryDTO;
 import com.itproject.itproject.model.Category;
 
 import com.itproject.itproject.repository.CategoryRepository;
@@ -19,7 +20,8 @@ public class CategoryService {
     this.categoryRepository = categoryRepository;
   }
 
-  public Category createCategory(Category category) {
+  public Category createCategory(CategoryDTO categoryDTO) {
+    Category category = this.convertDTOToEntity(categoryDTO);
     return categoryRepository.save(category);
   }
 
@@ -43,5 +45,12 @@ public class CategoryService {
 
   public void deleteCategory(Long id) {
     categoryRepository.deleteById(id);
+  }
+
+  public Category convertDTOToEntity(CategoryDTO authorDTO) {
+    Category category = new Category();
+    category.setName(authorDTO.getName());
+    category.setFile(authorDTO.getFile());
+    return category;
   }
 }

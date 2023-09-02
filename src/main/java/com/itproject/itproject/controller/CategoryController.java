@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.itproject.itproject.dto.CategoryDTO;
 import com.itproject.itproject.model.Category;
 import com.itproject.itproject.service.CategoryService;
 
@@ -29,8 +30,8 @@ public class CategoryController {
   }
 
   @PostMapping
-  public ResponseEntity<Category> createCategory(@RequestBody Category category) {
-    Category newCategory = categoryService.createCategory(category);
+  public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO categoryDTO) {
+    Category newCategory = categoryService.createCategory(categoryDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(newCategory);
   }
 
