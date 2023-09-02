@@ -67,8 +67,12 @@ public class BookService {
         .orElse(null);
   }
 
-  public void deleteBook(Long id) {
-    bookRepository.deleteById(id);
+  public Book deactivateBook(Long id) {
+    return bookRepository.findById(id)
+        .map(book -> {
+          book.setStatus(false);
+          return bookRepository.save(book);
+        }).orElse(null);
   }
 
   public Book convertDTOToEntity(BookDTO bookDTO, Author author, Category category) {
