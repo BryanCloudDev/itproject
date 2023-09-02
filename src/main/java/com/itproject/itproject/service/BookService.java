@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.itproject.itproject.dto.AuthorDTO;
 import com.itproject.itproject.dto.BookDTO;
 import com.itproject.itproject.model.Author;
 import com.itproject.itproject.model.Book;
@@ -36,12 +37,7 @@ public class BookService {
       return null;
     }
 
-    Book newBook = new Book();
-    newBook.setName(bookDTO.getName());
-    newBook.setAuthor(author);
-    newBook.setCategory(category);
-    newBook.setPrice(bookDTO.getPrice());
-    newBook.setStatus(bookDTO.getStatus());
+    Book newBook = this.convertDTOToEntity(bookDTO, author, category);
 
     return bookRepository.save(newBook);
   }
@@ -69,5 +65,15 @@ public class BookService {
 
   public void deleteBook(Long id) {
     bookRepository.deleteById(id);
+  }
+
+  public Book convertDTOToEntity(BookDTO bookDTO, Author author, Category category) {
+    Book newBook = new Book();
+    newBook.setName(bookDTO.getName());
+    newBook.setAuthor(author);
+    newBook.setCategory(category);
+    newBook.setPrice(bookDTO.getPrice());
+    newBook.setStatus(bookDTO.getStatus());
+    return newBook;
   }
 }
