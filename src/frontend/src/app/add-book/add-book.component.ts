@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorResponse, CategoryResponse } from '../dto/BookResponse';
 import { AddBookService } from './add-book.service';
+import { BookRequest } from '../dto/BookRequest';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -9,8 +11,14 @@ import { AddBookService } from './add-book.service';
 export class AddBookComponent implements OnInit {
   public authors: AuthorResponse[] | undefined;
   public categories: CategoryResponse[] | undefined;
+  public book: BookRequest = {
+    name: '',
+    authorId: 0,
+    categoryId: 0,
+    price: 0,
+  };
 
-  constructor(private addBookService: AddBookService) {}
+  constructor(private addBookService: AddBookService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAuthors();
@@ -27,5 +35,19 @@ export class AddBookComponent implements OnInit {
     this.addBookService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
+  }
+
+  goToListOfBooks() {
+    this.router.navigate(['/book-administration']);
+  }
+
+  createBook() {
+    this.addBookService.createBook(this.book).subscribe((data) => {
+      this.goToListOfBooks();
+    });
+  }
+
+  onSubmit() {
+    this.createBook();
   }
 }
