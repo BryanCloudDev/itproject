@@ -48,10 +48,19 @@ public class BookService {
   }
 
   public Book updateBook(Long id, BookDTO updatedBook) {
+    Author author = authorService.getAuthorById(updatedBook.getAuthorId());
+    Category category = categoryService.getCategoryById(updatedBook.getCategoryId());
+
+    if (author == null || category == null) {
+      return null;
+    }
+
     return bookRepository.findById(id)
         .map(book -> {
           book.setName(updatedBook.getName());
           book.setPrice(updatedBook.getPrice());
+          book.setAuthor(author);
+          book.setCategory(category);
           book.setStatus(updatedBook.getStatus());
           return bookRepository.save(book);
         })
