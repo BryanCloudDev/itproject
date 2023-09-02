@@ -19,7 +19,7 @@ import com.itproject.itproject.model.Author;
 import com.itproject.itproject.service.AuthorService;
 
 @RestController
-@RequestMapping("/authors")
+@RequestMapping("/api/authors")
 public class AuthorController {
 
   @Autowired

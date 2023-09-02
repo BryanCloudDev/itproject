@@ -19,7 +19,7 @@ import com.itproject.itproject.model.Book;
 import com.itproject.itproject.service.BookService;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 public class BookController {
 
   @Autowired

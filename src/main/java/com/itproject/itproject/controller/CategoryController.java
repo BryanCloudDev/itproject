@@ -19,7 +19,7 @@ import com.itproject.itproject.model.Category;
 import com.itproject.itproject.service.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
   @Autowired
